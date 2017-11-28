@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="">
+    <mat-icon>home</mat-icon>
+    Kezdőlap
+  </button>
+
+  <span class="fill-remaining-space" fxHide="false" fxHide.gt-sm></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/transactions">Tranzakciók</button>
+    <button mat-button routerLink="/transactions/new">Új tranzakció</button>    
+    <button mat-button routerLink="/accounts">Saját számlaszámok</button>
+  </div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu xPosition="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/transactions">Tranzakciók</button>
+  <button mat-button routerLink="/transactions/new">Új tranzakció</button>      
+  <button mat-menu-item routerLink="/accounts">Saját számlaszámok</button>
+</mat-menu>
+
+<div class="container">
+  
+  <!-- <main-page></main-page> -->
+  <router-outlet></router-outlet>
+  
+  </div>

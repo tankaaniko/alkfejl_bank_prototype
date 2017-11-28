@@ -1,0 +1,30 @@
+<h1 class="display-2">Számlaszámok:</h1>
+
+<div class="row">
+  <div class="col">
+
+    <!-- <status-filter ></status-filter> -->
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Számlaszám</th>
+          <th scope="col">Dátum</th>
+          <th scope="col">Egyenleg</th>
+          <th scope="col">Zárolt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accounts ">
+          <th scope="row">{{ account.id }}</th>
+          <td>{{ account.accountNumber }}</td>
+          <td> {{ account.creationDate }} </td>
+          <td>{{ account.balance }}</td>
+          <td>{{ account.blocked }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <button mat-button color=primary (click)="onNewClick()">New issue! </button> -->
+
+  </div>
