@@ -5,8 +5,7 @@
   <div class="form-group">
     <mat-form-field>
       Forrás számlaszám :
-      <input name="sourceAccountNumber" [(ngModel)]="model.sourceAccountNumber" 
-      matInput type="text" required pattern="A/d+" #sourceAccountNumber="ngModel">
+      <input name="sourceAccountNumber" [(ngModel)]="model.sourceAccountNumber" matInput type="text" required pattern="A/d+" #sourceAccountNumber="ngModel">
       <!--location névvel hibvatkozok rá -->
     </mat-form-field>
   </div>
@@ -14,27 +13,26 @@
   <div class="form-group">
     <mat-form-field>
       Cél számlaszám:
-      <input name="targetAccountNumber" [(ngModel)]="model.targetAccountNumber"
-       matInput aria-describedby="descriptionHelp">
+      <input name="targetAccountNumber" [(ngModel)]="model.targetAccountNumber" matInput aria-describedby="descriptionHelp">
     </mat-form-field>
   </div>
 
   <div class="form-group">
     <mat-form-field>
       Célszámla tulajdonosa:
-      <input name="targetClientName" [(ngModel)]="model.targetClientName" 
-      matInput aria-describedby="descriptionHelp">
+      <input name="targetClientName" [(ngModel)]="model.targetClientName" matInput aria-describedby="descriptionHelp">
     </mat-form-field>
   </div>
 
   <div class="form-group">
     <mat-form-field>
       Utalás összege:
-      <input name="amount" [(ngModel)]="model.amount" 
-      matInput aria-describedby="descriptionHelp">
+      <input name="amount" [(ngModel)]="model.amount" matInput aria-describedby="descriptionHelp">
     </mat-form-field>
   </div>
 
   <!-- <button [disabled]="!issueForm.valid" ... -->
-  <button type="submit" mat-raised-button color="primary" routerLink="/transactions">Új tranzakció</button>
+  <button type="submit" mat-raised-button color="primary" 
+   (click)="submitForm(transactionForm)"
+  >Új tranzakció</button>
 </form>

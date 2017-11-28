@@ -1,5 +1,5 @@
-import { Component, OnInit, Input , OnChanges, Output, EventEmitter} from '@angular/core';
-import {Transaction} from "../transaction";
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Transaction } from "../transaction";
 import { TransactionService } from '../transaction.service';
 
 @Component({
@@ -9,24 +9,23 @@ import { TransactionService } from '../transaction.service';
 })
 export class TransactionFormComponent implements OnChanges {
 
-  @Input() transaction : Transaction;
-  model : Transaction = new Transaction();
-  transactionService : TransactionService;
-
+  @Input() transaction: Transaction;
+  model: Transaction = new Transaction();
+  //transactionService:  TransactionService;
   @Output() onSubmit = new EventEmitter<Transaction>();
 
-  constructor() { }
+  constructor(private transactionService : TransactionService) { }
 
   ngOnChanges() {
-    this.model = Object.assign({},this.transaction);
+    this.model = Object.assign({}, this.transaction);
   }
 
-  submit(form){
-    if(form.valid){
+  submitForm(form) {
+    /*if(!form.valid){
       return;
-    }
+    }*/
     this.onSubmit.emit(this.model);
-    //this.transactionService.addTransaction(this.model);
+    this.transactionService.addTransaction(this.model);
   }
 
 

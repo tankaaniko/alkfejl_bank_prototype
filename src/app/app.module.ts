@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,6 +23,7 @@ import { AccountListComponent } from './account-list/account-list.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { TransactionDetailComponent } from './transaction-detail/transaction-detail.component';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
+import {TransactionService} from "./transaction.service";
 
 
 @NgModule({
@@ -44,7 +47,7 @@ import { TransactionFormComponent } from './transaction-form/transaction-form.co
     RoutingModule,
     MatFormFieldModule, MatInputModule
   ],
-  providers: [],
+  providers: [TransactionService],
   bootstrap: [AppComponent]
 })
 
