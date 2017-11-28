@@ -2,11 +2,11 @@ export class Transaction{
     id : number;
     type :  string;
     status : string;
-    sourceAccountNumber : string  = "-";
-    targetAccountNumber : string = "-";
+    sourceAccountNumber : string  = "";
+    targetAccountNumber : string = "";
     targetClientName :string = "";
     date : Date;
-    amount : number = 0;
+    amount : number ;
 
 }
 

@@ -48,9 +48,9 @@ export class TransactionService {
   addTransaction(transaction: Transaction) {
     let t: string = "";
 
-    if (transaction.sourceAccountNumber === "-") {
+    if (transaction.sourceAccountNumber === "") {
       t = Type[Type.IN]
-    } else if (transaction.targetAccountNumber === "-") {
+    } else if (transaction.targetAccountNumber === "") {
       t = Type[Type.OUT]
     } else {
       t = Type[Type.TRANSFER]

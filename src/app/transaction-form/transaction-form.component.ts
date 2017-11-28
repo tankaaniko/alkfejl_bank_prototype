@@ -10,7 +10,7 @@ import { TransactionService } from '../transaction.service';
 export class TransactionFormComponent implements OnChanges {
 
   @Input() transaction : Transaction;
-  model : Transaction = null;
+  model : Transaction = new Transaction();
   transactionService : TransactionService;
 
   @Output() onSubmit = new EventEmitter<Transaction>();
