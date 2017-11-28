@@ -9,7 +9,7 @@ export class TransactionService {
       id: 1,
       type: Type[Type.IN],
       status: Status[Status.ACTIVE],
-      sourceAccountNumber: "",
+      sourceAccountNumber: "-",
       targetAccountNumber: "A1",
       targetClientName: "Valaki",
       date: new Date(),
@@ -30,8 +30,8 @@ export class TransactionService {
       type: Type[Type.OUT],
       status: Status[Status.ACTIVE],
       sourceAccountNumber: "A3",
-      targetAccountNumber: "",
-      targetClientName: "Valaki3",
+      targetAccountNumber: "-",
+      targetClientName: "-",
       date: new Date(),
       amount: 200
     }
@@ -41,7 +41,28 @@ export class TransactionService {
 
   constructor() { }
 
-  getTransactions(){
+  getTransactions() {
     return this.transactions;
+  }
+
+  addTransaction(transaction: Transaction) {
+    let t: string = "";
+
+    if (transaction.sourceAccountNumber === "-") {
+      t = Type[Type.IN]
+    } else if (transaction.targetAccountNumber === "-") {
+      t = Type[Type.OUT]
+    } else {
+      t = Type[Type.TRANSFER]
+    }
+
+
+    const trans = Object.assign(transaction, {
+      id: this.transactions.length + 1,
+      status: Status[Status.ACTIVE],
+      type: t,
+      date: new Date()
+    });
+    this.transactions.push(trans);
   }
 }

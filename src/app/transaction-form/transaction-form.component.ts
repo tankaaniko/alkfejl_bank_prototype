@@ -1,5 +1,6 @@
 import { Component, OnInit, Input , OnChanges, Output, EventEmitter} from '@angular/core';
 import {Transaction} from "../transaction";
+import { TransactionService } from '../transaction.service';
 
 @Component({
   selector: 'app-transaction-form',
@@ -10,6 +11,7 @@ export class TransactionFormComponent implements OnChanges {
 
   @Input() transaction : Transaction;
   model : Transaction = null;
+  transactionService : TransactionService;
 
   @Output() onSubmit = new EventEmitter<Transaction>();
 
@@ -24,6 +26,7 @@ export class TransactionFormComponent implements OnChanges {
       return;
     }
     this.onSubmit.emit(this.model);
+    //this.transactionService.addTransaction(this.model);
   }
 
 

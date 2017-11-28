@@ -42,8 +42,7 @@ import { TransactionFormComponent } from './transaction-form/transaction-form.co
     MatButtonToggleModule,
     FormsModule,
     RoutingModule,
-    MatFormFieldModule, MatInputModule,
-    MatButtonToggleModule
+    MatFormFieldModule, MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

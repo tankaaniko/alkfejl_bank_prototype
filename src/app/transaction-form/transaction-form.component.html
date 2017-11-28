@@ -1,26 +1,52 @@
 <h1 class="display-2">Új tranzakció</h1>
-<form (submit)="submit(issueForm)" #issueForm="ngForm">
+<form (submit)="submit(transactionForm)" #transactionForm="ngForm">
   <!-- Hivatkozok erre ez obejctre-->
 
   <div class="form-group">
     <mat-form-field>
-      <input name="location"
-       [(ngModel)]="model.location"
+      Forrás számlaszám : 
+      <input name="sourceAccountNumber"
+       [(ngModel)]="model.sourceAccountNumber"
        matInput type="text"
-        placeholder="Enter location" 
+        placeholder="Adja meg a forrás számlaszámot!" 
         required pattern="A/d+"
-        #location="ngModel">
+        #sourceAccountNumber="ngModel">
       <!--location névvel hibvatkozok rá -->
-
     </mat-form-field>
   </div>
 
   <div class="form-group">
     <mat-form-field>
-      <textarea name="description" [(ngModel)]="model.description" matInput aria-describedby="descriptionHelp" placeholder="Enter issue details"></textarea>
+      Cél számlaszám:
+      <input name="targetAccountNumber" 
+      [(ngModel)]="model.targetAccountNumber"
+       matInput aria-describedby="descriptionHelp"
+        placeholder="Cél számlaszám:">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      Célszámla tulajdonosa:
+      <input name="targetClientName" 
+      [(ngModel)]="model.targetClientName"
+       matInput aria-describedby="descriptionHelp"
+        placeholder="Cél számla tulajdonos:">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      Utalás összege:
+      <input name="amount" 
+      [(ngModel)]="model.amount"
+       matInput aria-describedby="descriptionHelp"
+        placeholder="Utalás összege:">
     </mat-form-field>
   </div>
 
   <!-- <button [disabled]="!issueForm.valid" ... -->
-  <button type="submit" mat-raised-button color="primary" routerLink="/issues">Save issue</button>
+  <button type="submit" 
+  mat-raised-button color="primary" 
+  routerLink="/transactions">Új tranzakció</button>
 </form>
