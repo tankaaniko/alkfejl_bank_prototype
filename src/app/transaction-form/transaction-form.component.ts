@@ -14,17 +14,27 @@ export class TransactionFormComponent implements OnChanges {
   //transactionService:  TransactionService;
   @Output() onSubmit = new EventEmitter<Transaction>();
 
-  constructor(private transactionService : TransactionService) { }
+  constructor(//){};
+    private transactionService: TransactionService) { }
 
   ngOnChanges() {
     this.model = Object.assign({}, this.transaction);
   }
 
-  submitForm(form) {
-    /*if(!form.valid){
+  submit(form) {
+    if (!form.valid) {
+      console.log("baj van");
       return;
-    }*/
+    }
+
+
     this.onSubmit.emit(this.model);
+    for (var i = 0; i < this.transactionService.getTransactions().length; i++) {
+      console.log(this.transactionService.getTransactions()[i]);
+    }
+  }
+
+  add() {
     this.transactionService.addTransaction(this.model);
   }
 

@@ -15,6 +15,9 @@ export class TransactionListComponent implements OnInit {
 
   constructor(private transactionService:TransactionService) { 
     this.transactions = this.transactionService.getTransactions();
+    for (var i = 0; i < this.transactionService.getTransactions().length; i++) {
+      console.log(this.transactionService.getTransactions()[i]);
+    }
   }
 
   ngOnInit() {

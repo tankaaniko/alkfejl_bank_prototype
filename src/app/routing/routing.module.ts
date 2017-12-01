@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes }   from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from '../app.component';
@@ -7,6 +7,7 @@ import { MainPageComponent } from '../main-page/main-page.component';
 import { AccountListComponent } from "../account-list/account-list.component";
 import { TransactionListComponent } from "../transaction-list/transaction-list.component";
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
+import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
   {
@@ -25,19 +26,24 @@ const routes: Routes = [
     path: 'transactions',
     component: TransactionListComponent
   },
-   {
-     path: 'accounts',
-     component: AccountListComponent
-   },
-   {
-     path: 'transactions/new',
-     component: TransactionFormComponent
-   }
+  {
+    path: 'accounts',
+    component: AccountListComponent
+  },
+  {
+    path: 'transactions/new',
+    component: TransactionFormComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+    
+  }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)  ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   declarations: []
 })
 export class RoutingModule { }

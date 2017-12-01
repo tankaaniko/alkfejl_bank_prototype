@@ -24,6 +24,9 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
 import { TransactionDetailComponent } from './transaction-detail/transaction-detail.component';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import {TransactionService} from "./transaction.service";
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { ClientService } from './client.service';
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import {TransactionService} from "./transaction.service";
     AccountListComponent,
     AccountDetailComponent,
     TransactionDetailComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ import {TransactionService} from "./transaction.service";
     RoutingModule,
     MatFormFieldModule, MatInputModule
   ],
-  providers: [TransactionService],
+  providers: [TransactionService,AuthService,ClientService],
   bootstrap: [AppComponent]
 })
 

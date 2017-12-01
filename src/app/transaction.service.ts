@@ -39,27 +39,33 @@ export class TransactionService {
 
 
 
-  constructor() { }
+  constructor() {
+    for (var i = 0; i < this.getTransactions().length; i++) {
+      console.log(this.getTransactions()[i]);
+    }
+   }
 
-  getTransactions() {
+  getTransactions(): Transaction[] {
+    
     return this.transactions;
+
   }
 
   addTransaction(transaction: Transaction) {
-    let t: string = "";
+    var t: Type;
 
     if (transaction.sourceAccountNumber === "") {
-      t = Type[Type.IN]
+      t = Type.IN
     } else if (transaction.targetAccountNumber === "") {
-      t = Type[Type.OUT]
+      t = Type.OUT
     } else {
-      t = Type[Type.TRANSFER]
+      t = Type.TRANSFER
     }
 
 
     const trans = Object.assign(transaction, {
       id: this.transactions.length + 1,
-      status: Status[Status.ACTIVE],
+      status: Status.ACTIVE,
       type: t,
       date: new Date()
     });
