@@ -1,48 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Transaction, Type, Status } from "./transaction";
+import { TRANSACTIONSMOCK } from "./mock-transactions";
 
 @Injectable()
 export class TransactionService {
 
-  transactions: Transaction[] = [
-    {
-      id: 1,
-      type: Type[Type.IN],
-      status: Status[Status.ACTIVE],
-      sourceAccountNumber: "-",
-      targetAccountNumber: "A1",
-      targetClientName: "Valaki",
-      date: new Date(),
-      amount: 200
-    },
-    {
-      id: 2,
-      type: Type[Type.TRANSFER],
-      status: Status[Status.ACTIVE],
-      sourceAccountNumber: "A1",
-      targetAccountNumber: "A2",
-      targetClientName: "Valaki2",
-      date: new Date(),
-      amount: 300
-    },
-    {
-      id: 3,
-      type: Type[Type.OUT],
-      status: Status[Status.ACTIVE],
-      sourceAccountNumber: "A3",
-      targetAccountNumber: "-",
-      targetClientName: "-",
-      date: new Date(),
-      amount: 200
-    }
-  ];
-
-
-
+  transactions: Transaction[] = TRANSACTIONSMOCK;
+    
   constructor() {
-    for (var i = 0; i < this.getTransactions().length; i++) {
+    /*for (let i = 0; i < this.getTransactions().length; i++) {
       console.log(this.getTransactions()[i]);
-    }
+    }*/
    }
 
   getTransactions(): Transaction[] {
@@ -52,23 +20,25 @@ export class TransactionService {
   }
 
   addTransaction(transaction: Transaction) {
-    var t: Type;
+    let t: Type;
 
     if (transaction.sourceAccountNumber === "") {
-      t = Type.IN
+      t = Type.IN;
     } else if (transaction.targetAccountNumber === "") {
-      t = Type.OUT
+      t = Type.OUT;
     } else {
-      t = Type.TRANSFER
+      t = Type.TRANSFER;
     }
 
-
-    const trans = Object.assign(transaction, {
-      id: this.transactions.length + 1,
-      status: Status.ACTIVE,
-      type: t,
-      date: new Date()
-    });
+    const trans = new Transaction();
+    trans.id = this.transactions.length + 1;
+    trans.type = Type[t];
+    trans.status = Status[Status.ACTIVE];
+    trans.sourceAccountNumber = transaction.sourceAccountNumber;
+    trans.targetAccountNumber = transaction.targetAccountNumber;
+    trans.targetClientName = transaction.targetClientName;
+    trans.date = new Date();
+    trans.amount = transaction.amount;
     this.transactions.push(trans);
   }
 }

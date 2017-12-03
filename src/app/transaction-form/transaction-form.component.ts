@@ -10,15 +10,17 @@ import { TransactionService } from '../transaction.service';
 export class TransactionFormComponent implements OnChanges {
 
   @Input() transaction: Transaction;
-  model: Transaction = new Transaction();
+  //model: Transaction = new Transaction();
   //transactionService:  TransactionService;
-  @Output() onSubmit = new EventEmitter<Transaction>();
+  //@Output() onSubmit = new EventEmitter<Transaction>();
 
   constructor(//){};
-    private transactionService: TransactionService) { }
+    private transactionService: TransactionService) {
+      this.transaction = new Transaction();
+    }
 
   ngOnChanges() {
-    this.model = Object.assign({}, this.transaction);
+    //this.model = Object.assign({}, this.transaction);
   }
 
   submit(form) {
@@ -28,14 +30,15 @@ export class TransactionFormComponent implements OnChanges {
     }
 
 
-    this.onSubmit.emit(this.model);
+    /*this.onSubmit.emit(this.model);
     for (var i = 0; i < this.transactionService.getTransactions().length; i++) {
       console.log(this.transactionService.getTransactions()[i]);
-    }
+    }*/
   }
 
   add() {
-    this.transactionService.addTransaction(this.model);
+    this.transactionService.addTransaction(this.transaction);
+    console.log(this.transaction);
   }
 
 
