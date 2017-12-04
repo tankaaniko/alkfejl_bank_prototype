@@ -5,7 +5,7 @@
     <mat-form-field>
       <input 
         name="username" 
-        [(ngModel)]="model.username" 
+        [(ngModel)]="client.username" 
         matInput type="text" 
         placeholder="Enter username"
         required
@@ -18,7 +18,7 @@
     <mat-form-field>
       <input 
         name="password" 
-        [(ngModel)]="model.password" 
+        [(ngModel)]="client.password" 
         matInput type="password" 
         placeholder="Enter password"
         required
@@ -31,7 +31,7 @@
     <mat-form-field>
       <input 
         name="pin" 
-        [(ngModel)]="model.pin" 
+        [(ngModel)]="client.pin" 
         matInput type="pin" 
         placeholder="Enter pin"
         required
@@ -40,5 +40,5 @@
     </mat-form-field>
   </div>
 
-  <button  type="submit" mat-raised-button color="primary" (click)="login(form)">Bejelentkezés</button>
+  <button  type="submit" mat-raised-button color="primary" (click)="submit(form)">Bejelentkezés</button>
 </form>
