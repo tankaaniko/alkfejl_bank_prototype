@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     if(this.authService.isLogged()){
       console.log("Sikeres bejelentkezés.");
       this.router.navigate(["/transactions"])
+
     }
 
   }
