@@ -18,6 +18,7 @@ export class AuthService {
   }
 
   login(client: Client) {
+   //http
     let allClient: Client[] = this.clientService.getClients();
     for (let i = 0; i < allClient.length; i++) {
       if (client.username === allClient[i].username &&
