@@ -1,25 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Transaction, Type, Status } from "./transaction";
 import { TRANSACTIONSMOCK } from "./mock-transactions";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from 'rxjs/Observable';
+
+const httpOptions = {
+  headers: new HttpHeaders(
+    { 'Content-Type': 'application/json' })
+}
 
 @Injectable()
 export class TransactionService {
 
   transactions: Transaction[] = TRANSACTIONSMOCK;
+
+  constructor(//private http: HttpClient
+  ) {
     
-  constructor() {
     /*for (let i = 0; i < this.getTransactions().length; i++) {
       console.log(this.getTransactions()[i]);
     }*/
-   }
-
-  getTransactions(): Transaction[] {
-    
-    return this.transactions;
 
   }
+  
+    getTransactions(): Transaction[] {
+      
+      return this.transactions;
+  
+    }
+  
+  /*
+  getTransactions(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>('api/transaction/list')
+  }*/
 
-  addTransaction(transaction: Transaction) {
+  
+  addTransaction(transaction: Transaction): string  {
     let t: Type;
 
     if (transaction.sourceAccountNumber === "") {
@@ -40,5 +56,12 @@ export class TransactionService {
     trans.date = new Date();
     trans.amount = transaction.amount;
     this.transactions.push(trans);
+
+    return Type[t];
   }
+
+
+  
+
+
 }

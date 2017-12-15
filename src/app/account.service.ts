@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Account } from "./account";
+import { Transaction , Type, Status} from './transaction';
 
 @Injectable()
 export class AccountService {
@@ -28,9 +29,56 @@ export class AccountService {
     }
   ];
 
+  
+
   constructor() { }
 
-  getAccounts() {
+  getAccounts(): Account[] {
+    for(let i =0; i< this.accounts.length;i++){
+      console.log("Számla" +  this.accounts[i].accountNumber);
+    
+    }
     return this.accounts;
   }
+
+  getAccountByAccountNumber(sourceNumber:String){
+    console.log("Account serviceben " + sourceNumber);
+
+    for(let i =0; i< this.getAccounts().length;i++){
+      console.log("Számla - " +  this.getAccounts()[i].accountNumber);
+    
+    }
+
+    for(let i =0; i< this.getAccounts().length;i++){
+      if(this.getAccounts()[i].accountNumber === sourceNumber){        
+        return i;
+      }
+    }
+
+
+  }
+  
+  transfer(transaction: Transaction){
+    
+    if(transaction.type === "IN"){
+      let i = this.getAccountByAccountNumber(transaction.targetAccountNumber);      
+      this.getAccounts()[i].balance += transaction.amount;
+
+    }else if(transaction.type === "OUT"){
+      let i = this.getAccountByAccountNumber(transaction.sourceAccountNumber);            
+      this.getAccounts()[i].balance -= transaction.amount;
+      
+    }else{
+      let i = this.getAccountByAccountNumber(transaction.sourceAccountNumber);            
+      let j = this.getAccountByAccountNumber(transaction.targetAccountNumber);            
+      
+      console.log(i);
+      console.log(j);
+
+      this.getAccounts()[i].balance -= transaction.amount;
+      this.getAccounts()[j].balance += transaction.amount;     
+      
+    }
+  }
+
 }

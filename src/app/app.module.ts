@@ -27,6 +27,7 @@ import {TransactionService} from "./transaction.service";
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { ClientService } from './client.service';
+import { AccountService } from "./account.service";
 
 
 @NgModule({
@@ -49,9 +50,10 @@ import { ClientService } from './client.service';
     MatButtonToggleModule,
     FormsModule,
     RoutingModule,
-    MatFormFieldModule, MatInputModule
+    MatFormFieldModule, MatInputModule,
+    HttpClientModule
   ],
-  providers: [TransactionService,AuthService,ClientService],
+  providers: [TransactionService,AuthService,ClientService, AccountService],
   bootstrap: [AppComponent]
 })
 

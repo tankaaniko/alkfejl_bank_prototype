@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Transaction } from "../transaction";
 import { TransactionService } from '../transaction.service';
+import { AccountService } from '../account.service';
+
 
 @Component({
   selector: 'app-transaction-form',
@@ -15,9 +17,11 @@ export class TransactionFormComponent implements OnChanges {
   //@Output() onSubmit = new EventEmitter<Transaction>();
 
   constructor(//){};
-    private transactionService: TransactionService) {
-      this.transaction = new Transaction();
-    }
+    private transactionService: TransactionService,
+    private accountService: AccountService) {
+    this.transaction = new Transaction();
+
+  }
 
   ngOnChanges() {
     //this.model = Object.assign({}, this.transaction);
@@ -37,7 +41,22 @@ export class TransactionFormComponent implements OnChanges {
   }
 
   add() {
+    for (let i = 0; i < this.accountService.getAccounts.length ; i++) {
+      console.log(this.accountService.getAccounts()[i].accountNumber + "  -  " + this.accountService.getAccounts()[i].balance);
+
+    }
     this.transactionService.addTransaction(this.transaction);
+
+    if (this.transaction.sourceAccountNumber === "") {
+      this.transaction.type = "IN";
+      this.accountService.transfer(this.transaction);
+    } else if (this.transaction.targetAccountNumber === "") {
+      this.transaction.type = "OUT";
+      this.accountService.transfer(this.transaction);
+    } else {
+      this.accountService.transfer(this.transaction);
+    }
+
     console.log(this.transaction);
   }
 

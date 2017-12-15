@@ -14,6 +14,7 @@ export class TransactionListComponent implements OnInit {
   transactions : Transaction[] = [];
 
   constructor(private transactionService:TransactionService) { 
+   
     this.transactions = this.transactionService.getTransactions();
     for (var i = 0; i < this.transactionService.getTransactions().length; i++) {
       console.log(this.transactionService.getTransactions()[i]);
@@ -21,6 +22,9 @@ export class TransactionListComponent implements OnInit {
   }
 
   ngOnInit() {
+   // this.transactionService.getTransactions().subscribe(
+   //   transactions => {this.transactions = transactions}
+   // )
   }
 
 }
