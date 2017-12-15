@@ -24,20 +24,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  //async
-  submit(form){
+  async submit(form){
     if(!form.valid){
-      console.log("Hiba a bejelentkezésnél.");
+      //console.log("Hiba a bejelentkezésnél.");
       return;
     }
 
-    // await
-    this.authService.login(this.client);
-    if(this.authService.isLogged()){
-      console.log("Sikeres bejelentkezés.");
+    try {
+      await this.authService.login(this.client);
       this.router.navigate(["/transactions"])
+      /*if(this.authService.isLogged()){
+        console.log("Sikeres bejelentkezés.");
+        this.router.navigate(["/transactions"])
 
+      }*/
     }
-
+    catch(e) {
+      console.log(e);
+    }
   }
 }

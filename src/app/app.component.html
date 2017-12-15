@@ -35,26 +35,38 @@
 
   <span class="fill-remaining-space" fxHide="false" fxHide.gt-sm></span>
   <div class="w-100" fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-menu-item routerLink="/transactions">Tranzakciók</button>
-    <button mat-button routerLink="/transactions/new">Új tranzakció</button>
-    <button mat-menu-item routerLink="/accounts">Saját számlaszámok</button>
-    <span class="fill-remaining-space"></span>
+    <div *ngIf="authService.isLoggedIn">
+      <button mat-menu-item routerLink="/transactions">Tranzakciók</button>
+    </div>
+    <div *ngIf="authService.isLoggedIn">
+      <button mat-button routerLink="/transactions/new">Új tranzakció</button>
+    </div>
+    <div *ngIf="authService.isLoggedIn">
+      <button mat-menu-item routerLink="/accounts">Saját számlaszámok</button>
+    </div>  
     <div *ngIf="!authService.isLoggedIn">
       <button mat-button routerLink="/login">Login</button>
     </div>
     <div *ngIf="authService.isLoggedIn">
-      <span>Hello, {{ authService.loggedInClient.username }}!</span>
       <button mat-button routerLink="/logout">Logout</button>
+      <span>Hello, {{ authService.client.username }}!</span>
     </div>
+    <span class="fill-remaining-space"></span>
   </div>
   <button mat-icon-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
 <mat-menu xPosition="before" #menu="matMenu">
-  <button mat-menu-item routerLink="/transactions">Tranzakciók</button>
-  <button mat-button routerLink="/transactions/new">Új tranzakció</button>
-  <button mat-menu-item routerLink="/accounts">Saját számlaszámok</button>
+  <div *ngIf="authService.isLoggedIn">
+    <button mat-menu-item routerLink="/transactions">Tranzakciók</button>
+  </div>
+  <div *ngIf="authService.isLoggedIn">
+    <button mat-button routerLink="/transactions/new">Új tranzakció</button>
+  </div>
+  <div *ngIf="authService.isLoggedIn">
+    <button mat-menu-item routerLink="/accounts">Saját számlaszámok</button>
+  </div>  
   <div *ngIf="!authService.isLoggedIn">
     <button mat-menu-item routerLink="/login">Login</button>
   </div>

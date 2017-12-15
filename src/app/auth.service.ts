@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Client } from "./client";
 import { ClientService } from "./client.service";
+import { tap } from "rxjs/operators";
+
+const httpOptions = {
+  headers: new HttpHeaders(
+    {'Content-Type': 'application/json'})
+}
 
 
 @Injectable()
 export class AuthService {
 
   isLoggedIn: boolean = false;
-  loggedInClient : Client;
+  //loggedInClient : Client;
+  client: Client;
 
   constructor(
-    private clientService: ClientService
+    private http: HttpClient
   ) { }
 
   isLogged(){
@@ -18,18 +26,18 @@ export class AuthService {
   }
 
   login(client: Client) {
-   //http
-    let allClient: Client[] = this.clientService.getClients();
-    for (let i = 0; i < allClient.length; i++) {
-      if (client.username === allClient[i].username &&
-        client.password === allClient[i].password &&
-        client.pin === allClient[i].pin){
-          console.log("sikeres bejelentkezés.");
-          this.isLoggedIn = true;
-          this.loggedInClient = allClient[i];
-          break;
-        }
-    }
+    return this.http.post<Client>(
+       //'http://localhost:4200/api/client/login',
+      'api/client/login',
+      client,
+      httpOptions
+    ).pipe(
+      tap((client: Client) => {
+        this.isLoggedIn = true;
+        this.client = client;
+      })
+    )
+    .toPromise();
   }
 
 }
