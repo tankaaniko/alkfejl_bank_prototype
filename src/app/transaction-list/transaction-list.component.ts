@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Transaction} from "../transaction";
 import {TransactionService} from "../transaction.service";
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -11,20 +12,16 @@ import {TransactionService} from "../transaction.service";
 })
 export class TransactionListComponent implements OnInit {
 
-  transactions : Transaction[] = [];
+  transactions : Transaction[] ;
 
   constructor(private transactionService:TransactionService) { 
    
-    this.transactions = this.transactionService.getTransactions();
-    for (var i = 0; i < this.transactionService.getTransactions().length; i++) {
-      console.log(this.transactionService.getTransactions()[i]);
-    }
   }
 
   ngOnInit() {
-   // this.transactionService.getTransactions().subscribe(
-   //   transactions => {this.transactions = transactions}
-   // )
+    this.transactionService.getTransactions().subscribe(
+      transactions => {this.transactions = transactions}
+    )
   }
 
 }

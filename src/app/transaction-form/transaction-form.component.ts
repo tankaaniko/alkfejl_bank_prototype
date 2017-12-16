@@ -39,7 +39,7 @@ export class TransactionFormComponent implements OnChanges {
       console.log(this.transactionService.getTransactions()[i]);
     }*/
   }
-
+/*
   add() {
     for (let i = 0; i < this.accountService.getAccounts.length ; i++) {
       console.log(this.accountService.getAccounts()[i].accountNumber + "  -  " + this.accountService.getAccounts()[i].balance);
@@ -59,6 +59,6 @@ export class TransactionFormComponent implements OnChanges {
 
     console.log(this.transaction);
   }
-
+*/
 
 }

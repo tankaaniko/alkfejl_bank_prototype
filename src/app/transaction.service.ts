@@ -14,28 +14,29 @@ export class TransactionService {
 
   transactions: Transaction[] = TRANSACTIONSMOCK;
 
-  constructor(//private http: HttpClient
+  constructor(
+    private http: HttpClient
   ) {
-    
+
     /*for (let i = 0; i < this.getTransactions().length; i++) {
       console.log(this.getTransactions()[i]);
     }*/
 
   }
-  
+  /*
     getTransactions(): Transaction[] {
       
       return this.transactions;
   
-    }
-  
-  /*
+    }*/
+
+
   getTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>('api/transaction/list')
-  }*/
+  }
 
-  
-  addTransaction(transaction: Transaction): string  {
+/*
+  addTransaction(transaction: Transaction): string {
     let t: Type;
 
     if (transaction.sourceAccountNumber === "") {
@@ -59,9 +60,17 @@ export class TransactionService {
 
     return Type[t];
   }
+*/
+  addTransaction(transaction: Transaction): Promise<Transaction>{
+    return this.http.post<Transaction>(
+      'api/transaction/create',
+      transaction,
+      httpOptions
+    ).toPromise();
+
+  }
 
 
-  
 
 
 }

@@ -13,14 +13,15 @@ export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
 
   constructor(private accountService: AccountService) {
-    this.accounts = this.accountService.getAccounts();
+   
 
   }
 
 
   ngOnInit() {
-    this.accounts = this.accountService.getAccounts();
-    
+    this.accountService.getAccounts().subscribe(
+      transactions => {this.accounts = transactions}
+    )
   }
 
   

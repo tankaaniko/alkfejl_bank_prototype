@@ -57,6 +57,7 @@
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
+
 <mat-menu xPosition="before" #menu="matMenu">
   <div *ngIf="authService.isLoggedIn">
     <button mat-menu-item routerLink="/transactions">Tranzakciók</button>

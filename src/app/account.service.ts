@@ -1,10 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Account } from "./account";
 import { Transaction , Type, Status} from './transaction';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from 'rxjs/Observable';
+
+const httpOptions = {
+  headers: new HttpHeaders(
+    { 'Content-Type': 'application/json' })
+}
 
 @Injectable()
 export class AccountService {
 
+
+  accounts: Account[];
+  /*
   accounts: Account[] = [
     {
       id: 1,
@@ -28,19 +38,24 @@ export class AccountService {
       blocked: true
     }
   ];
-
+*/
   
 
-  constructor() { }
+  constructor(    
+    private http: HttpClient
+  ) { }
 
-  getAccounts(): Account[] {
+  getAccounts(): Observable<Account[]> {
+    /*
     for(let i =0; i< this.accounts.length;i++){
       console.log("Számla" +  this.accounts[i].accountNumber);
     
     }
-    return this.accounts;
+    return this.accounts;*/
+    return this.http.get<Account[]>('api/account/list')
+    
   }
-
+/*
   getAccountByAccountNumber(sourceNumber:String){
     console.log("Account serviceben " + sourceNumber);
 
@@ -80,5 +95,5 @@ export class AccountService {
       
     }
   }
-
+*/
 }

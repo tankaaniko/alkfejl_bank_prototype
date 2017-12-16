@@ -40,4 +40,14 @@ export class AuthService {
     .toPromise();
   }
 
+  logout(){
+    return this.http.post('api/client/logout', {}, httpOptions).pipe(
+      tap(res => {
+        console.log('service logout', res);
+        this.isLoggedIn = false;
+        this.client = new Client();
+      })
+    ).toPromise();
+  }
+
 }
