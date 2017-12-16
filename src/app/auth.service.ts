@@ -46,6 +46,22 @@ export class AuthService {
     .toPromise();
   }
 
+  loginEmployee(employee: Employee){
+    return this.http.post<Employee>(
+      //'http://localhost:4200/api/client/login',
+     'api/employee/login',
+     employee,
+     httpOptions
+   ).pipe(
+     tap((employee: Employee) => {
+       this.employeeIsLoggedIn = true; // kliens menüjéhez kell, ugyan ilyen kellene az employeeIsLoggedIn-hez is!
+       this.isLoggedIn = true;
+       this.employee = employee;
+     })
+   )
+   .toPromise();
+  }
+
   
   logout() {
     // https://stackoverflow.com/a/46816238

@@ -1,0 +1,57 @@
+<h1 class="display-2">Login</h1>
+<form (submit)="submit(form)" #form="ngForm">
+  {{ message }}
+  <div class="form-group">
+    <mat-form-field>
+      <input 
+        name="username" 
+        [(ngModel)]="client.username" 
+        matInput type="text" 
+        placeholder="Enter username"
+        required
+        #username="ngModel">
+     
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input 
+        name="password" 
+        [(ngModel)]="client.password" 
+        matInput type="password" 
+        placeholder="Enter password"
+        required
+        #password="ngModel">
+    
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+      <mat-form-field>
+        <input 
+          name="account" 
+          [(ngModel)]="client.account" 
+          matInput type="account" 
+          placeholder="Enter account number"
+          required
+          #password="ngModel">
+      
+      </mat-form-field>
+    </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input 
+        name="pin" 
+        [(ngModel)]="client.pin" 
+        matInput type="pin" 
+        placeholder="Enter pin"
+        required
+        #pin="ngModel">
+     
+    </mat-form-field>
+  </div>
+
+  <button  type="submit" mat-raised-button color="primary" (click)="submit(form)">Bejelentkezés</button>
+</form>

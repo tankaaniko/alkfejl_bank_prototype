@@ -8,6 +8,8 @@ import { AccountListComponent } from "../account-list/account-list.component";
 import { TransactionListComponent } from "../transaction-list/transaction-list.component";
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 import { LoginComponent } from '../login/login.component';
+import { LoginEmployeeComponent } from "../login-employee/login-employee.component";
+import { LoginClientComponent } from "../login-client/login-client.component";
 
 const routes: Routes = [
   {
@@ -31,8 +33,12 @@ const routes: Routes = [
     component: TransactionFormComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'client/login',
+    component: LoginClientComponent
+  },
+  {
+    path: 'employee/login',
+    component: LoginEmployeeComponent
   },
   {
     path: 'logout',

@@ -44,8 +44,8 @@
   </div>
 
   <div *ngIf="!authService.isLoggedIn">
-    <button mat-button routerLink="/login">Bejelentkezés Ügyfél!</button>
-    <button mat-button routerLink="/login">Bejelentkezés Alkalmazott!</button>
+    <button mat-button routerLink="/client/login">Bejelentkezés Ügyfél!</button>
+    <button mat-button routerLink="/employee/login">Bejelentkezés Alkalmazott!</button>
   </div>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
@@ -94,8 +94,8 @@
     </div>
 
   <div *ngIf="!authService.isLoggedIn">
-    <button mat-menu-item routerLink="/login">Bejelentkezés Ügyfél!</button>
-    <button mat-menu-item routerLink="/login">Bejelentkezés Alkalmazott!</button>
+    <button mat-menu-item routerLink="/client/login">Bejelentkezés Ügyfél!</button>
+    <button mat-menu-item routerLink="/employee/login">Bejelentkezés Alkalmazott!</button>
   </div>
 
   

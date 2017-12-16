@@ -29,6 +29,8 @@ import { AuthService } from './auth.service';
 import { ClientService } from './client.service';
 import { AccountService } from "./account.service";
 import { MenuComponent } from './menu/menu.component';
+import { LoginClientComponent } from './login-client/login-client.component';
+import { LoginEmployeeComponent } from './login-employee/login-employee.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { MenuComponent } from './menu/menu.component';
     TransactionDetailComponent,
     TransactionFormComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    LoginClientComponent,
+    LoginEmployeeComponent
   ],
   imports: [
     BrowserModule,
