@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { ClientService } from './client.service';
 import { AccountService } from "./account.service";
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AccountService } from "./account.service";
     AccountDetailComponent,
     TransactionDetailComponent,
     TransactionFormComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
