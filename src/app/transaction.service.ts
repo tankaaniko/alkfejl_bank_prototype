@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class TransactionService {
 
-  transactions: Transaction[] = TRANSACTIONSMOCK;
+  //transactions: Transaction[] = TRANSACTIONSMOCK;
 
   constructor(
     private http: HttpClient
@@ -62,6 +62,18 @@ export class TransactionService {
   }
 */
   addTransaction(transaction: Transaction): Promise<Transaction>{
+    let t: Type;
+    if (transaction.sourceAccountNumber === "") {
+      t = Type.IN;
+    } else if (transaction.targetAccountNumber === "") {
+      t = Type.OUT;
+    } else {
+      t = Type.TRANSFER;
+    }
+    transaction.type = Type[t];
+    transaction.status = Status[Status.ACTIVE];
+    transaction.date = new Date();
+
     return this.http.post<Transaction>(
       'api/transaction/create',
       transaction,

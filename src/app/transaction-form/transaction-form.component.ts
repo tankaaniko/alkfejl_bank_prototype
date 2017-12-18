@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
 import { Transaction } from "../transaction";
 import { TransactionService } from '../transaction.service';
 import { AccountService } from '../account.service';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -18,7 +19,8 @@ export class TransactionFormComponent implements OnChanges {
 
   constructor(//){};
     private transactionService: TransactionService,
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private router : Router) {
     this.transaction = new Transaction();
 
   }
@@ -27,10 +29,19 @@ export class TransactionFormComponent implements OnChanges {
     //this.model = Object.assign({}, this.transaction);
   }
 
-  submit(form) {
+  async submit(form) {
     if (!form.valid) {
       console.log("baj van");
       return;
+    }
+
+    try {
+      await this.transactionService.addTransaction(this.transaction);
+      this.router.navigate(["/transactions"])
+     
+    }
+    catch(e) {
+      console.log(e);
     }
 
 

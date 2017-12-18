@@ -20,8 +20,10 @@ export class TransactionListComponent implements OnInit {
 
   ngOnInit() {
     this.transactionService.getTransactions().subscribe(
-      transactions => {this.transactions = transactions}
+      transactions => {setTimeout(() => {
+        this.transactions = transactions;
+      }, 1000);
+     }
     )
   }
-
 }
