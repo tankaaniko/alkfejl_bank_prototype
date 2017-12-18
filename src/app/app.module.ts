@@ -31,6 +31,8 @@ import { AccountService } from "./account.service";
 import { MenuComponent } from './menu/menu.component';
 import { LoginClientComponent } from './login-client/login-client.component';
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
+import { ClientTransactionComponent } from './client-transaction/client-transaction.component';
+import { ClientAccountsComponent } from './client-accounts/client-accounts.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { LoginEmployeeComponent } from './login-employee/login-employee.componen
     LoginComponent,
     MenuComponent,
     LoginClientComponent,
-    LoginEmployeeComponent
+    LoginEmployeeComponent,
+    ClientTransactionComponent,
+    ClientAccountsComponent
   ],
   imports: [
     BrowserModule,

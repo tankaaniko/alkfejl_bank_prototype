@@ -82,6 +82,12 @@ export class TransactionService {
 
   }
 
+  filterTransactionByAccountNumber(account: string): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>('api/transaction/list/{account}')
+  }
+
+
+
 
 
 

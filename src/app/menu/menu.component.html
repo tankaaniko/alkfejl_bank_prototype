@@ -9,7 +9,7 @@
 
     <!-- Kliens menü -->
     <div *ngIf="authService.clientIsLoggedIn">
-      <button mat-button routerLink="/transactions">Saját tranzakciók</button>
+      <button mat-button routerLink="/client/transactions">Saját tranzakciók</button>
     </div>
 
     <div *ngIf="authService.clientIsLoggedIn">
@@ -17,7 +17,7 @@
     </div>
 
     <div *ngIf="authService.clientIsLoggedIn">
-      <button mat-button routerLink="/accounts">Saját számlaszámok</button>
+      <button mat-button routerLink="client/accounts">Saját számlaszámok</button>
     </div>
 
     <!-- Alkalmazott menü -->
@@ -28,6 +28,10 @@
 
     <div *ngIf="authService.employeeIsLoggedIn">
       <button mat-button routerLink="/accounts">Összes számlaszám </button>
+    </div>
+
+    <div *ngIf="authService.employeeIsLoggedIn">
+      <button mat-button routerLink="/transactions/new">Új tranzakció</button>
     </div>
 
     <span class="fill-remaining-space"></span>
@@ -58,7 +62,7 @@
 
   <!--------------------- Kliens ---------------- -->
   <div *ngIf="authService.clientIsLoggedIn">
-    <button mat-menu-item routerLink="/transactions">Saját tranzakciók</button>
+    <button mat-menu-item routerLink="/client/transactions">Saját tranzakciók</button>
   </div>
 
   <div *ngIf="authService.clientIsLoggedIn">
@@ -66,9 +70,9 @@
   </div>
 
   <div *ngIf="authService.clientIsLoggedIn">
-    <button mat-menu-item routerLink="/accounts">Saját számlaszámok</button>
+    <button mat-menu-item routerLink="client/accounts">Saját számlaszámok</button>
   </div>
-<!--  
+  <!--  
   <div *ngIf="!authService.isLoggedIn">
     <button mat-menu-item routerLink="/login">Bejelentkezés Ügyfél!</button>
     <button mat-menu-item routerLink="/login">Bejelentkezés Alkalmazott!</button>
@@ -83,22 +87,26 @@
     <button mat-menu-item routerLink="/accounts">Összes számlaszám</button>
   </div>
 
+  <div *ngIf="authService.employeeIsLoggedIn">
+    <button mat-menu-item routerLink="/transactions/new">Új tranzakció</button>
+  </div>
+
   <div *ngIf="authService.clientIsLoggedIn">
-      <span>Hello, {{ authService.client.username }}!</span>
-      <button mat-button routerLink="/" (click)="logout()">Kijelentkezés</button>
-    </div>
-  
-    <div *ngIf="authService.employeeIsLoggedIn">
-      <span>Hello, {{ authService.employee.username }}!</span>
-      <button mat-button routerLink="/" (click)="logout()">Kijelentkezés</button>
-    </div>
+    <span>Hello, {{ authService.client.username }}!</span>
+    <button mat-button routerLink="/" (click)="logout()">Kijelentkezés</button>
+  </div>
+
+  <div *ngIf="authService.employeeIsLoggedIn">
+    <span>Hello, {{ authService.employee.username }}!</span>
+    <button mat-button routerLink="/" (click)="logout()">Kijelentkezés</button>
+  </div>
 
   <div *ngIf="!authService.isLoggedIn">
     <button mat-menu-item routerLink="/client/login">Bejelentkezés Ügyfél!</button>
     <button mat-menu-item routerLink="/employee/login">Bejelentkezés Alkalmazott!</button>
   </div>
 
-  
+
 </mat-menu>
 
 <div class="container">

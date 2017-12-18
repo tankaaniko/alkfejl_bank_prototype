@@ -10,6 +10,8 @@ import { TransactionFormComponent } from '../transaction-form/transaction-form.c
 import { LoginComponent } from '../login/login.component';
 import { LoginEmployeeComponent } from "../login-employee/login-employee.component";
 import { LoginClientComponent } from "../login-client/login-client.component";
+import { ClientTransactionComponent } from "../client-transaction/client-transaction.component";
+import { ClientAccountsComponent } from "../client-accounts/client-accounts.component";
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'transactions',
     component: TransactionListComponent
+  },
+  {
+    path: 'client/transactions',
+    component: ClientTransactionComponent
+  },
+  {
+    path: 'client/accounts',
+    component: ClientAccountsComponent
   },
   {
     path: 'accounts',
