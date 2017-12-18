@@ -17,7 +17,7 @@ export class TransactionFormComponent implements OnChanges {
   //transactionService:  TransactionService;
   //@Output() onSubmit = new EventEmitter<Transaction>();
 
-  constructor(//){};
+  constructor(
     private transactionService: TransactionService,
     private accountService: AccountService,
     private router : Router) {

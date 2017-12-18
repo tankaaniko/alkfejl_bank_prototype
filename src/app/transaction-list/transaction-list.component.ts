@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Transaction} from "../transaction";
+import {Transaction, Status} from "../transaction";
 import {TransactionService} from "../transaction.service";
 import { Observable } from 'rxjs/Observable';
 
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 export class TransactionListComponent implements OnInit {
 
   transactions : Transaction[] ;
+  filteredTransactions : Transaction[] ;
 
   constructor(private transactionService:TransactionService) { 
    
@@ -26,4 +27,11 @@ export class TransactionListComponent implements OnInit {
      }
     )
   }
+
+  execute(transaction: Transaction){
+    transaction.status = "EXECUTED";
+  }
+
+
+
 }

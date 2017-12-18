@@ -15,7 +15,9 @@
           <th scope="col">Cél számla</th>
           <th scope="col">Cél számlatulajdonos</th>
           <th scope="col">Dátum</th>
-          <th scope="col">Összeg</th>          
+          <th scope="col">Összeg</th>   
+          <th scope="col">Végrehajt</th>        
+          
         </tr>
       </thead>
       <tbody>
@@ -27,7 +29,12 @@
           <td>{{ transaction.targetAccountNumber }}</td>
           <td>{{ transaction.targetClientName }}</td>
           <td>{{ transaction.date }}</td>
-          <td>{{ transaction.amount }}</td>          
+          <td>{{ transaction.amount }}</td>  
+         <!--  <td ng-if="transaction.status === ACTIVE ">
+           
+             <button mat-button color=primary (click)="execute(transaction)" > Végrehajt! </button> 
+            
+          </td>     -->   
         </tr>
       </tbody>
     </table>
