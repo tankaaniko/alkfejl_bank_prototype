@@ -4,5 +4,5 @@ export class Account{
     creationDate: Date;
     balance: number;
     blocked: boolean;
-
+    username: string;
 }

@@ -55,6 +55,10 @@ export class AccountService {
     return this.http.get<Account[]>('api/account/list')
     
   }
+
+  getMyAccounts(): Observable<Account[]>{
+    return this.http.get<Account[]>('api/account/listmy')
+  }
 /*
   getAccountByAccountNumber(sourceNumber:String){
     console.log("Account serviceben " + sourceNumber);

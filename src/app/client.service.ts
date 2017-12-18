@@ -6,7 +6,8 @@ import {Account} from "./account";
 @Injectable()
 export class ClientService {
 
-  clients: Client[] = [
+  clients: Client[];
+ /* clients: Client[] = [
     {
       accounts: [
         {
@@ -46,7 +47,7 @@ export class ClientService {
       password: "c2",
       pin: "0002"
     }
-  ];
+  ];*/
 
   constructor() { }
 

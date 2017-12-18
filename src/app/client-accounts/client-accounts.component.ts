@@ -17,7 +17,7 @@ export class ClientAccountsComponent implements OnInit {
   
   // Ide kellene a saját számlák lekérdezése!!!! 
     ngOnInit() {
-      this.accountService.getAccounts().subscribe(
+      this.accountService.getMyAccounts().subscribe(
         transactions => {this.accounts = transactions}
       )
     }
