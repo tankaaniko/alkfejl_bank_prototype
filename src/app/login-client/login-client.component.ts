@@ -29,7 +29,7 @@ export class LoginClientComponent implements OnInit {
 
     try {
       await this.authService.login(this.client);
-      this.router.navigate(["/transactions"])
+      this.router.navigate(["/client/accounts"])
 
     }
     catch (e) {

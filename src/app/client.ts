@@ -5,7 +5,7 @@ export class Client {
     accounts : Account[] ;
     id : number =0;
     name : string ="";
-    username : string="a";
-    password: string ="a";
-    pin: string = "0000";
+    username : string="";
+    password: string ="";
+    pin: string = "";
 }

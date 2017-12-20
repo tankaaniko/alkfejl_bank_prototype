@@ -31,7 +31,7 @@ export class LoginEmployeeComponent implements OnInit {
   
       try {
         await this.authService.loginEmployee(this.employee);
-        this.router.navigate(["/transactions"])
+        this.router.navigate(["/"])
   
       }
       catch (e) {
